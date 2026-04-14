@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget Optimizer</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>💰 Budget Optimizer</h1>
+
+    <!-- Budget and Expense Inputs -->
+    <label>Total Budget (₹):</label>
+    <input type="number" id="budget" placeholder="e.g. 5000" />
+
+    <label>Item Name:</label>
+    <input type="text" id="item" placeholder="e.g. Books" />
+
+    <label>Cost (₹):</label>
+    <input type="number" id="cost" placeholder="e.g. 1000" />
+
+    <label>Priority (1–5):</label>
+    <input type="number" id="priority" min="1" max="5" placeholder="e.g. 3" />
+
+    <button onclick="addExpense()">➕ Add Expense</button>
+    <button onclick="optimize()">🚀 Run Optimizer</button>
+
+    <!-- Expense List -->
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Cost</th>
+          <th>Priority</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="expense-list"></tbody>
+    </table>
+
+    <!-- Pie Chart Output -->
+    <h2>📊 Budget Breakdown</h2>
+    <canvas id="budgetChart" width="400" height="300"></canvas>
+
+    <!-- Optional: Bar Graphs (if using updateBars) -->
+    <div class="graph-container">
+      <div class="bar-wrapper">
+        <div class="bar-label">Total Budget</div>
+        <div class="bar"><div id="budget-bar" class="bar-fill budget-fill">₹0</div></div>
+      </div>
+
+      <div class="bar-wrapper">
+        <div class="bar-label">Expenses</div>
+        <div class="bar"><div id="expense-bar" class="bar-fill expense-fill">₹0</div></div>
+      </div>
+
+      <div class="bar-wrapper">
+        <div class="bar-label">Priority Score</div>
+        <div class="bar"><div id="priority-bar" class="bar-fill priority-fill">0</div></div>
+      </div>
+    </div>
+
+    <!-- Text-Based Optimizer Result -->
+    <h2>📋 Optimized Result</h2>
+    <pre id="result">Add some expenses and click "Run Optimizer" to see results here.</pre>
+  </div>
+
+  <!-- Optimizer Logic -->
+  <script src="optimizer.js"></script>
+</body>
+</html>
